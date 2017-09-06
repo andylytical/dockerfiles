@@ -18,6 +18,8 @@ aka: Bash on Ubuntu on Windows
 * Powershell
   * `Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux`
 * Restart when prompted
+* Enable Developer Mode
+  * Settings -> Update and Security -> For developers
 * From windows search
   * `bash`
 
