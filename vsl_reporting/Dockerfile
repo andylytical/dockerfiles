@@ -7,7 +7,4 @@ WORKDIR /vsl
 COPY src /vsl
 RUN pip install -r /vsl/requirements.txt
 
-ENV PYEXCH_AD_DOMAIN=UOFI \
-    PYEXCH_EMAIL_DOMAIN=illinois.edu
-
 CMD ["bash"]
