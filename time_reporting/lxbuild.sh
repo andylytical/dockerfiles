@@ -5,17 +5,20 @@ set -x
 USER="andylytical"
 IMAGE="ncsa-time-reporting"
 TAG=$( date "+%Y%m%d" )
-SRC="src"
+SRCREPO="https://github.com/ncsa/time_reporting.git"
+SRCDIR="src"
 
 
 # Ensure latest code
-[[ -d $SRC ]] || { echo "Missing source dir"; exit 99
-}
+[[ -d $SRCDIR ]] && rm -rf $SRCDIR
 (
-cd $SRC
+git clone "$SRCREPO" "$SRCDIR"
+cd "$SRCDIR"
 git pull
 git submodule update --recursive --remote
 )
+
+exit "FORCED EXIT"
 
 # BUILD IMAGE
 docker build . -t $IMAGE:$TAG
