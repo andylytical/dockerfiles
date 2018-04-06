@@ -18,8 +18,6 @@ git pull
 git submodule update --recursive --remote
 )
 
-exit "FORCED EXIT"
-
 # BUILD IMAGE
 docker build . -t $IMAGE:$TAG
 docker tag $IMAGE:$TAG $USER/$IMAGE:$TAG

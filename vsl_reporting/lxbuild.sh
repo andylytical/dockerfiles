@@ -5,16 +5,16 @@ set -x
 USER="andylytical"
 IMAGE="ncsa-vsl-reporter"
 TAG=$( date "+%Y%m%d" )
-SRC="src"
-
+SRCREPO="https://github.com/ncsa/vsl_reporting.git"
+SRCDIR="src"
 
 # Ensure latest code
-[[ -d $SRC ]] || { echo "Missing source dir"; exit 99
-}
+[[ -d $SRCDIR ]] && rm -rf $SRCDIR
 (
-cd $SRC
+git clone "$SRCREPO" "$SRCDIR"
+cd "$SRCDIR"
 git pull
-git submodule update --init
+git submodule update --recursive --remote
 )
 
 # BUILD IMAGE
