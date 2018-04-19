@@ -15,10 +15,11 @@ SRCDIR="src"
 git clone "$SRCREPO" "$SRCDIR"
 cd "$SRCDIR"
 git pull
+git submodule update --init
 git submodule update --recursive --remote
 )
 
 # BUILD IMAGE
 docker build . -t $IMAGE:$TAG
 docker tag $IMAGE:$TAG $USER/$IMAGE:$TAG
-docker push $USER/$IMAGE:$TAG
+#docker push $USER/$IMAGE:$TAG
