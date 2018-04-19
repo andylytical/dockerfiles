@@ -14,6 +14,7 @@ SRCDIR="src"
 git clone "$SRCREPO" "$SRCDIR"
 cd "$SRCDIR"
 git pull
+git submodule update --init
 git submodule update --recursive --remote
 )
 
