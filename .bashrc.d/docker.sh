@@ -10,8 +10,8 @@ alias ubuntu="docker run --rm -it ubuntu bash"
 alias p3='docker run --rm -it python:3'
 
 # Cleanup aliases
-alias dpclean='docker rm $(docker ps -a -q)'
-alias diclean='docker rmi $(docker images -f "dangling=true" -q)'
+alias dpclean='docker ps -a -q | xargs -r docker rm'
+alias diclean='docker images -f "dangling=true" -q | xargs -r docker rmi'
 
 #
 # Docker local containers with various mappings for dev, X, local-user etc.
