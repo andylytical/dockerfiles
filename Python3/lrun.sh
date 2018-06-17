@@ -1,5 +1,7 @@
 #!/bin/bash
 
+[[ $# -eq 1 ]] && container_name="$1"
+
 image_name=py3dev
 
 homedir=$HOME
@@ -11,4 +13,7 @@ windows_home="/mnt/j/$USER"
 docker build . -t $image_name
 
 # Run Image
-docker run --rm -it --mount type=bind,src=$homedir,dst=/home/$USER $image_name
+docker run --rm -it \
+  --mount type=bind,src=$homedir,dst=/home/$USER \
+  ${container_name:+--name} "${container_name}" \
+  $image_name
