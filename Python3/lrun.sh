@@ -15,5 +15,6 @@ docker build . -t $image_name
 # Run Image
 docker run --rm -it \
   --mount type=bind,src=$homedir,dst=/home/$USER \
-  ${container_name:+--name} "${container_name}" \
+  --net=host \
+  ${container_name:+--name "$container_name"} \
   $image_name
