@@ -66,3 +66,9 @@ dkDev(){
   dkAsUser
   _p -w $PWD
 }
+
+
+# Exec bash in a running container
+dksh(){
+    docker exec -it "${1}" /bin/bash
+}
