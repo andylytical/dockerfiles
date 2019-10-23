@@ -1,0 +1,12 @@
+version: '3.7'
+
+services:
+    Python3:
+        build:
+            context: Python3
+            args:
+                - TIMEZONE
+        container_name: py3dev
+        image: py3local
+        volumes:
+            - ${HOME}:/home

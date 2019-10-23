@@ -1,9 +1,10 @@
 FROM python:3
 
-ENV TZ=America/Chicago
+ARG TIMEZONE
+ENV TIMEZONE=${TIMEZONE}
 
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
-    && echo $TZ > /etc/timezone \
+RUN ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime \
+    && echo $TIMEZONE > /etc/timezone \
     && apt update \
     && apt install -y sqlite vim dos2unix bsdmainutils
 
