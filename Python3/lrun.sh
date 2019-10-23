@@ -5,7 +5,7 @@
 image_name=py3dev
 
 homedir=$HOME
-# Check if we're running on windows
+# Check if we're running on windows (via WSL)
 windows_home="/mnt/j/$USER"
 [[ -d "/mnt/j/$USER" ]] && homedir="J:\\$USER"
 
