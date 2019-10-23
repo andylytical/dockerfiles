@@ -23,11 +23,7 @@ cd  c:\Users\aloftus\Projects\my_project
 * Clone this repo and start a Python3 docker container (via PowerShell as normal user)
 ```
 git clone https://github.com/andylytical/dockerfiles.git
-docker-compose up -d Python3
-```
-* Connect to Python3 container
-```
-docker-compose exec Python3 bash
+docker-compose run --rm Python3 bash
 ```
 * Run python code/project inside Python3 container
 ```

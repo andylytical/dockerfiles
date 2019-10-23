@@ -9,4 +9,6 @@ services:
         container_name: py3dev
         image: py3local
         volumes:
-            - ${HOME}:/home
+            - type: bind
+              source: "${HOMEDRIVE}/${HOMEPATH}"
+              target: /home
