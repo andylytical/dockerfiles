@@ -4,40 +4,53 @@ Docker Utility Containers
 ### Windows
 #### Initial Setup
 * Start PowerShell as Administrator
-* Install chocolatey, docker, and git
+* Install chocolatey
 ```PowerShell
-# Install chocolatey
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-# Install docker and git
-cinst docker git -y
 ```
+* Install git (using chocolatey)
+```PowerShell
+cinst git -y
+```
+
+#### Install Docker
+* https://docs.docker.com/docker-for-windows/install/
+* When prompted, enable Hyper-V
+* Docker Settings
+  * Shared Drives
+    * Add checkbox for drives to export
+  * Advanced
+    * (OPTIONAL) Adjust Images and volumes VHD location
 
 #### Develop Code
 Write code in Windows using whatever process, editor, IDE you prefer.
 
-Note the filesystem path to the project directory.
-Your Windows user home directory (`C:\Users\<username>`) will be mounted at `/home` in the Docker container.
-For example, if user `aloftus` has a project `just_4_nuggets` in a folder called `Projects`, the full Windows path would be:
-```
-cd c:\Users\aloftus\Projects\just_4_nuggets
-```
-and the path to the same code, inside the docker container, would be:
-```
-cd /home/Projects/just_4_nuggets
-```
 
 #### Test Python code
+:information_source: NOTE: Your Windows user directory (`C:\Users\<username>`) will be mounted at `/home` in the Docker container.
+
 * Start PowerShell as a normal user
-* Clone this `dockerfiles` repo and start the Python3 docker container
+
+* Clone this `dockerfiles` repo
 ```
 git clone https://github.com/andylytical/dockerfiles.git
+cd dockerfiles
+```
+
+* Start the Python3 docker container
+```
 docker-compose run --rm Python3 bash
 ```
-Note you are now inside the docker container.
-* Run python code/project inside Python3 container
+
+* Run your python code (from inside Python3 container)
 ```
-# navigate to your code/project directory
-# continuing the "just_4_nuggets" example from above ...
-cd /home/Projects/just_4_nuggets
-python run.py #replace "run.py" with the actual name of the python file you wish to run
+# navigate to the directory containing your Python code
+cd /home/path_to_my_project
+
+# Install any python libraries you require
+python -m pip install -r requirements.txt
+
+# run your code
+#replace "run.py" with the actual name of the python file you wish to run
+python run.py
 ```
