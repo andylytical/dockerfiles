@@ -2,7 +2,7 @@
 
 [[ $# -eq 1 ]] && container_name="$1"
 
-image_name=py3local
+image_name=c7local
 
 homedir=$HOME
 # Check if we're running on windows (via WSL)

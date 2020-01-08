@@ -1,7 +1,7 @@
 version: '3.7'
 
 services:
-    Python3:
+    py3:
         build:
             context: Python3
             args:
@@ -10,5 +10,21 @@ services:
         image: py3local
         volumes:
             - type: bind
-              source: "${HOMEDRIVE}/${HOMEPATH}"
+              source: "${HOME}${USERPROFILE}"
               target: /home
+    c7:
+        build:
+            context: CentOS7
+            args:
+                - TIMEZONE
+        container_name: c7dev
+        image: c7local
+        privileged: true
+        volumes:
+            - type: bind
+              source: "${HOME}${USERPROFILE}"
+              target: /home
+            - type: bind
+              source: /sys/fs/cgroup
+              target: /sys/fs/cgroup
+              read_only: true

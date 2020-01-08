@@ -1,6 +1,6 @@
 # Windows PowerShell
 
-$image_name = "py3dev"
+$image_name = "c7local"
 
 # BUILD IMAGE
 docker build . -t $image_name
