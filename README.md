@@ -24,18 +24,24 @@ Run python code (from inside Python3 container)
 
 :information_source: NOTE: Your Windows user directory (`C:\Users\<username>`) will be mounted at `/home` in the Docker container.
 ```
+# Create venv (installing things as root always throws warnings)
+python3 -m venv /root/venv
+
+# Add venv to path
+export PATH=/root/venv/bin:$PATH
+
 # navigate to the directory containing your Python code
 cd /home/path_to_my_project
 
 # Install any python libraries you require
-python -m pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 
 # run your code
 #replace "run.py" with the actual name of the python file you wish to run
-python run.py
+python3 run.py
 ```
 
-# CentOS7
+# CentOS7 (DEPRECATED)
 ```
 docker-compose run --rm c7 bash
 ```
